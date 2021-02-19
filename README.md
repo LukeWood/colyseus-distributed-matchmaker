@@ -1,7 +1,8 @@
 # Colyseus Distributed Matchmaker
-Colyseus distributed matchmaker allows you to horizontally scale your [colyseus games](https://colyseus.io) in a linearly scalable fashion. The distributed matchmaker should be used with the [DistributedColyseusClient](https://github.com/LukeWood/distributed-colyseus-client).
+Colyseus distributed matchmaker allows you to horizontally scale your [colyseus games](https://colyseus.io) in a linearly scalable fashion.
+*Note1: The distributed client is still a world in progress.  A sample implementation is at the bottom of this readme*
 
-*Note: at the moment the DistributedColyseusClient only supports a subset of the Colyseus API*
+*Note2: at the moment the DistributedColyseusClient only supports a subset of the Colyseus API*
 
 # Design Goals
 - maintain linear scaling (if 10 clients can be hosted by 1 server, 100 clients should be hosted by 10 servers)
@@ -75,3 +76,30 @@ client.joinOrCreate(ROOM_NAME);
 - Heartbeat to detect crashed servers
 - Implement the full colyseus client API (right now only joinOrCreate & joinById are supported)
 - Introduce the presence portion to the colyseus server api
+
+# Distributed Client
+```
+import {Room, Client} from 'colyseus.js';
+
+export class DistributedColyseusClient {
+
+  constructor(readonly matchmakerEndpoint: string) {}
+
+  async joinOrCreate<T extends any>(roomName: string, options: any): Promise<Room<T>> {
+    const requestBody = {roomName: roomName};
+    let response = await fetch(this.matchmakerEndpoint + '/joinOrCreate', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    })
+    const server = (await response.json()).server;
+    return new Client(this.wsprotocol + server).joinOrCreate(roomName, options);
+  }
+
+  get wsprotocol():string {
+    return window.location.protocol === 'https' ? 'wss://' : 'ws://';
+  }
+}
+```
