@@ -1,7 +1,8 @@
 # Colyseus Distributed Matchmaker
 Colyseus distributed matchmaker allows you to horizontally scale your [colyseus games](https://colyseus.io) in a linearly scalable fashion.
 
-![Distributed Colyseus Matchmaker](readme/distributed-colyseus-matchmaker.png);
+![Distributed Colyseus Matchmaker](readme/distributed-colyseus-matchmaker.png)
+
 
 *Note1: The distributed client is still a world in progress.  A sample implementation is at the bottom of this readme*
 
