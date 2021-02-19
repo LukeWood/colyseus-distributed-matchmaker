@@ -6,6 +6,8 @@
     "build": "tsc -p tsconfig.json",
     "start:server": "ts-node ./src/index.ts"
   },
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
   "author": "",
   "devDependencies": {
     "nodemon": "^2.0.4",

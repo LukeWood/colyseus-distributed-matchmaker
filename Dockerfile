@@ -6,10 +6,10 @@ COPY . .
 RUN yarn
 RUN yarn run build
 
-EXPOSE 80
-ENV PORT 80
+EXPOSE 7337
+ENV PORT 7337
 
 ENV NODE_ENV "production"
 
-CMD ["yarn", "start:serve"]
+CMD ["yarn", "start:server"]
 
