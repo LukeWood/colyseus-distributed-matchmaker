@@ -1,10 +1,11 @@
 {
   "name": "colyseus-distributed-matchmaker",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "scripts": {
     "start": "NODE_ENV='development' nodemon --watch './src/**/*.ts' --exec ts-node ./src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "start:server": "ts-node ./src/index.ts"
+    "start:server": "ts-node ./src/index.ts",
+    "prepublishOnly": "npm run build"
   },
   "main": "build/index.js",
   "typings": "build/index.d.ts",
@@ -21,5 +22,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.11.17"
-  }
+  },
+  "bin": "build/index.js"
 }
