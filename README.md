@@ -77,7 +77,7 @@ client.joinOrCreate(ROOM_NAME);
 ```
 
 # Roadmap
-- Heartbeat to detect crashed servers
+- ✅ Heartbeat to detect crashed servers
 - Implement the full colyseus client API (right now only joinOrCreate & joinById are supported)
 - Introduce the presence portion to the colyseus server api
 

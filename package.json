@@ -21,6 +21,7 @@
     "colyseus": "^0.14.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "is-reachable": "^5.0.0",
     "mongoose": "^5.11.17"
   },
   "bin": "./cli.js"
