@@ -33,7 +33,7 @@ const gameServer = new Server({
 });
 ```
 
-The distributed matchmaker also relies on colyseus [discovery](https://github.com/colyseus/colyseus/blob/master/src/discovery/index.ts).
+The distributed matchmaker also relies on colyseus [discovery](https://github.com/colyseus/colyseus/blob/9279adf7864850451247bdb645a23cde0210b0b7/packages/core/src/discovery/index.ts#L13).
 In Kubernetes you'll need to configure your servers with the `SELF_HOSTNAME` and `SELF_PORT` environment variables.  
 
 Next - you'll need to use the Presence API in your rooms to register the room names with hostname reporting:
